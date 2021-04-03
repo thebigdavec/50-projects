@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-active: #3498db;
+    --clr-inactive: #e0e0e0;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1 {
+    line-height: 2;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto 30px;
+    width: 90%;
+}
+
+.progress-container:before {
+    content: '';
+    background-color: var(--clr-inactive);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--clr-active);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 5px;
+    width: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: white;
+    color: #999;
+    border-radius: 100vw;
+    height: 60px;
+    width: 60px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--clr-inactive);
+    transition: border-color 0.4s ease 1ms;
+    box-shadow: 0 0 5px var(--clr-active);
+}
+
+.circle.active {
+    transition: border-color 0.4s ease 0.15s;
+    border-color: var(--clr-active);
+    animation: shadow-pulse 1s alternate infinite, rotate 5s infinite linear;
+}
+
+.btn {
+    background-color: var(--clr-active);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.1rem;
+    padding: 0.5em 2em;
+    margin: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: 200ms ease;
+    outline: none;
+    box-shadow: 0 2px 2px -2px black;
+}
+
+.btn:hover:not(:disabled),
+.btn:focus {
+    background-color: var(--clr-inactive);
+    color: black;
+    border-color: var(--clr-active);
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: 0 0 0 2px var(--clr-active) inset;
+}
+
+.btn:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+.btn:disabled {
+    background-color: var(--clr-inactive);
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+@keyframes shadow-pulse {
+    to {
+        box-shadow: 0 0 15px var(--clr-active);
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
